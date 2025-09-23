@@ -6,6 +6,7 @@
 
 #define LED_PIN15 14
 #define LED_PIN16 15
+#define LED_PIN17 16
 
 // SPI Defines
 // We are going to use SPI 0, and allocate it to the following GPIO pins
@@ -39,6 +40,7 @@ int main()
 {
     gpio_init(LED_PIN15);
     gpio_init(LED_PIN16);
+    gpio_init(LED_PIN17);
 
     stdio_init_all();
 
@@ -82,12 +84,14 @@ int main()
         
         gpio_put(LED_PIN15,1);
         gpio_put(LED_PIN16,1);
-
+        gpio_put(LED_PIN17,1);
+        
         printf("Hello, world!\n");
         sleep_ms(1000);
 
         gpio_put(LED_PIN15,0);
         gpio_put(LED_PIN16,0);
+        gpio_put(LED_PIN17,0);
 
     }
 }
