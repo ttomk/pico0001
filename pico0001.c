@@ -4,6 +4,9 @@
 #include "hardware/i2c.h"
 #include "hardware/uart.h"
 
+#define LED_PIN15 14
+#define LED_PIN16 15
+
 // SPI Defines
 // We are going to use SPI 0, and allocate it to the following GPIO pins
 // Pins can be changed, see the GPIO function select table in the datasheet for information on GPIO assignments
@@ -34,6 +37,9 @@
 
 int main()
 {
+    gpio_init(LED_PIN15);
+    gpio_init(LED_PIN16);
+
     stdio_init_all();
 
     // SPI initialisation. This example will use SPI at 1MHz.
@@ -73,7 +79,15 @@ int main()
     // For more examples of UART use see https://github.com/raspberrypi/pico-examples/tree/master/uart
 
     while (true) {
+        
+        gpio_put(LED_PIN15,1);
+        gpio_put(LED_PIN16,1);
+
         printf("Hello, world!\n");
         sleep_ms(1000);
+
+        gpio_put(LED_PIN15,0);
+        gpio_put(LED_PIN16,0);
+
     }
 }
